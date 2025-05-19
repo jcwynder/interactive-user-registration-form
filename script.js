@@ -49,6 +49,7 @@ function validateEmail() {
 
 // Validation for password input
 function validatePassword() {
+  // Checks if password input data passes custom conditions
   const passwordValue = passwordInput.value;
   if (passwordValue.length < 8) {
     passwordError.textContent = "Password must be at least 8 characters long.";
@@ -68,3 +69,22 @@ function validatePassword() {
     return true;
   }
 }
+// Validation for password confirmation input
+function validateConfirmPassword() {
+  // Checks if confirmPasswordInput value does not equal passwordInput value (returns false)
+  if (confirmPasswordInput.value !== passwordInput.value) {
+    // Returns error message if condition above returns false
+    confirmPasswordError.textContent = "Passwords do not match.";
+    return false;
+  } else {
+    // If condition above returns true, error message is cleared
+    confirmPasswordError.textContent = "";
+    return true;
+  }
+}
+
+// Add input event listeners for real-time validations
+usernameInput.addEventListener("input", validateUsername);
+emailInput.addEventListener("input", validateEmail);
+passwordInput.addEventListener("input", validatePassword);
+confirmPasswordInput.addEventListener("input", validateConfirmPassword);
