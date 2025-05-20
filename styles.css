@@ -1,3 +1,4 @@
+/* Apply a clean, sans-serif font and set up a centered layout */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -8,6 +9,7 @@ body {
   margin: 0;
 }
 
+/* Container styling for the registration form */
 .container {
   background-color: #fff;
   padding: 20px 30px;
@@ -16,26 +18,25 @@ body {
   width: 400px;
 }
 
+/* Header styling */
 h1 {
   text-align: center;
   color: #333;
 }
 
+/* Form group styling */
 .form-group {
   margin-bottom: 15px;
 }
 
+/* Label styling */
 .form-group label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-.password-input-container {
-  position: relative;
-  width: 100%;
-}
-
+/* Styling for text, email, and password inputs */
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"] {
@@ -43,24 +44,16 @@ h1 {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-sizing: border-box; /* Makes width calculation easier */
-  padding-right: 40px; /* Make space for the icon */
-}
-
-/* Specific styling for inputs inside the password wrapper */
-.password-input-container input {
-  width: 100%;
-  padding: 10px;
-  padding-right: 40px; /* Space for the toggle button */
-  border: 1px solid #ddd;
-  border-radius: 4px;
   box-sizing: border-box;
+  padding-right: 40px; /* Space for the toggle button */
 }
 
+/* Styling for invalid state of input field */
 .form-group input:invalid {
   border-color: #e74c3c; /* Light red for invalid built-in states */
 }
 
+/* Error message styling */
 .form-group .error-message {
   display: block;
   color: #e74c3c; /* Red for error messages */
@@ -69,11 +62,28 @@ h1 {
   min-height: 1em; /* Reserve space to prevent layout shifts */
 }
 
+/* Small text styling */
 .form-group small {
   display: block;
   font-size: 0.8em;
   color: #777;
   margin-top: 3px;
+}
+
+/* Input container for password fields */
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+/* Styling for the password toggle button */
+.password-input-container input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px; /* Space for the toggle button */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 /* Styling for the toggle button */
@@ -91,10 +101,12 @@ h1 {
   line-height: 1;
 }
 
+/* Hover effect for the toggle button */
 .password-toggle-btn:hover {
   color: #333; /* Darker color on hover */
 }
 
+/* Submit button styling */
 button[type="submit"] {
   width: 100%;
   padding: 10px;
@@ -106,6 +118,7 @@ button[type="submit"] {
   font-size: 16px;
 }
 
+/* Hover effect for the submit button */
 button[type="submit"]:hover {
   background-color: #2980b9;
 }

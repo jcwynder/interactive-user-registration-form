@@ -173,7 +173,7 @@ Below is a brief overview of the order of JavaScript code implemented:
 
 - Created validation functions for each `input` field.
 
-- Created function to implement toggle functionality of `passwordInput` and `confirmPasswordInput's` visibility.
+- Created function to implement toggle functionality of `passwordInput` and `confirmPasswordInput's` visibility state (visible or hidden).
 
 - Attached event listener to `input` fields to trigger the validation functions on each `input` event whenever user types or changes the value in that input field. This sets up the real-time feedback.
 
