@@ -10,8 +10,6 @@ const emailError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
 const confirmPasswordError = document.getElementById("confirmPasswordError");
 
-// Implementation to save username to localStorage
-localStorage.setItem("username", usernameInput.value);
 // Loads saved username value from localStorage
 const savedUsername = localStorage.getItem("username");
 if (savedUsername) {
@@ -35,12 +33,15 @@ function validateUsername() {
 
 // Validation for email input
 function validateEmail() {
-  // If input is invalid (blank), returns error message for user to submit proper input
-  if (!emailInput.validity.valid) {
+  // Variable declared and assigned to given regex pattern
+  const emailRegex =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  // Checks if current value of emailInput matches assigned regex pattern
+  if (!emailRegex.test(emailInput.value)) {
     emailError.textContent = "Please enter a valid email address.";
     return false;
   } else {
-    // If above condition is true, error message is cleared
+    // If input value matches given regex pattern, error message is cleared
     emailError.textContent = "";
     return true;
   }
@@ -106,6 +107,9 @@ registrationForm.addEventListener("submit", (event) => {
   ) {
     // Displays success message
     alert("Registration successful!");
+
+    // Implementation to save username to localStorage
+    localStorage.setItem("username", usernameInput.value);
 
     // Optionally, reset the form
     registrationForm.reset();

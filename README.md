@@ -14,7 +14,7 @@ For this assignment, I was tasked with building an **Interactive User Registrati
 
 In order to create a responsive and interactive form, I applied a wide range of concepts, including **DOM manipulation**, **event handling**, **HTML5 and JavaScript form validation**, and **localStorage**.
 
-[Click Here to Access Interactive User Registration Form](https://htmlpreview.github.io/?https://github.com/jcwynder/task-management-app/blob/main/index.html)
+[Click Here to Access Interactive User Registration Form](https://htmlpreview.github.io/?https://github.com/jcwynder/interactive-user-registration-form/blob/main/index.html)
 
 ## App Preview
 
@@ -51,7 +51,7 @@ After creating my required files, I proceeded into the `<index.html>` file to bu
 This form is nested within a parent container and includes:
 
 - Input fields for: Username, Email, Password, and Confirm Password.
-- A submission button
+- A submission button.
 - A `<span>` element to display appropiate error messages to correspond with each input.
 
 ### App Styling
