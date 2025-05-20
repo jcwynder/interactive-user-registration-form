@@ -18,23 +18,8 @@ In order to create a responsive and interactive form, I applied a wide range of 
 
 ## App Preview
 
-Task Management App
-![Design preview for Task Management App](#)
-
-Alert if input fields are left blank upon submission from Add Task button
-![Design preview for Task Management App](#)
-
-Functionality of task filter by status
-![Design preview for Task Management App](#)
-
-Functionality of task filter by category
-![Design preview for Task Management App](#)
-
-Update status functionality
-![Design preview for Task Management App](#)
-
-Delete task data functionality
-![Design preview for Task Management App](#)
+Interactive User Registration Form
+![Design preview for Interactive User Registration Form](images/InteractiveUserRegistrationFormPreview.png)
 
 ## Implementation
 
@@ -53,6 +38,7 @@ This form is nested within a parent container and includes:
 - Input fields for: Username, Email, Password, and Confirm Password.
 - A submission button.
 - A `<span>` element to display appropiate error messages to correspond with each input.
+- Unique `<button>` element(s) used to toggle visibility state (visible or hidden) of `input.values`.
 
 ### App Styling
 
@@ -100,6 +86,20 @@ Below is a list of the styles used and description of their functionality:
 - `margin-bottom: 5px;`: Adds a small 5-pixel margin below the label, separating it from the input field.
 - `font-weight: bold;`: Makes the label text bold for better readability.
 
+`.password-input-container`:
+
+- `position: relative;`: This establishes a containing block for absolutely positioned elements within it. It's essential for positioning the toggle button inside the input field.
+- `width: 100%;`: Ensures the container spans the full width of its parent element.
+
+`.password-input-container input`:
+
+- `width: 100%;`: Makes the input field take up the full width of its container.
+- `padding: 10px;`: Adds padding inside the input field for better text spacing.
+- `padding-right: 40px;`: Creates space on the right side of the input field to accommodate the toggle button without overlapping the text.
+- `border: 1px solid #ddd;`: Applies a light gray border around the input field.
+- `border-radius: 4px;`: Rounds the corners of the input field for a softer appearance.
+- `box-sizing: border-box;`: Includes padding and border in the element's total width and height, preventing layout issues.
+
 `.form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"]`:
 
 - `width: calc(100% - 22px);`: Sets the width of the input fields to be 100% of their parent container's width minus 22 pixels. This subtraction accounts for the default padding and border that browsers apply to input elements, ensuring the input fields don't overflow their container.
@@ -127,6 +127,25 @@ Below is a list of the styles used and description of their functionality:
 - `color: #777;`: Sets the color of the small text to a medium gray, often used for hints or supplementary information.
 - `margin-top: 3px;`: Adds a small margin above the small text.
 
+`.password-toggle-btn`:
+
+- `position: absolute;`: Positions the toggle button relative to its nearest positioned ancestor (the `.password-input-container`).
+- `top: 50%;`: Vertically centers the toggle button within the input field.
+- `right: 30px;`: Positions the toggle button 30 pixels from the right edge of the input field.
+- `transform: translateY(-50%);`: Adjusts the vertical position to ensure the button is perfectly centered.
+- `background: none;`: Removes any default background styling.
+- `border: none;`: Removes any default border styling.
+- `cursor: pointer;`: Changes the cursor to a pointer, indicating the button is clickable.
+- `font-size: 1.1em;`: Sets the font size of the icon inside the button.
+- `color: #777;`: Applies a medium gray color to the icon.
+- `padding: 0;`: Removes any default padding.
+- `line-height: 1;`: Ensures the icon is vertically aligned within the button.
+
+`.password-toggle-btn:hover`:
+
+- `:hover`: Applies styles when the user hovers over the toggle button.
+- `color: #333;`: Changes the icon color to a darker gray on hover, providing visual feedback to the user.
+
 `button[type="submit"]`:
 
 - `width: 100%;`: Makes the submit button take up the full width of its parent container.
@@ -148,13 +167,17 @@ After applying styles to the form, the final phase of this assignment required m
 
 Below is a brief overview of the order of JavaScript code implemented:
 
-- Selected necessary DOM elements (input fields and error message elements) using variables.
+- Selected necessary DOM elements (input fields, error message elements,and toggle button for password visibility) using variables.
 
-- Applied form's initial setup by saving username data to user's `localStorage`, then loading saved data into Username `input` field upon form refresh.
+- Established implementation to load saved data of `userNameInput.value`, from the user's `localStorage`, into Username `input` field upon form refresh.
 
-- Defined all validation functions for each `input` field.
+- Created validation functions for each `input` field.
 
-- Attached event listeners to `input` fields to trigger the validation functions on each `input` event. This sets up the real-time feedback.
+- Created function to implement toggle functionality of `passwordInput` and `confirmPasswordInput's` visibility.
+
+- Attached event listener to `input` fields to trigger the validation functions on each `input` event whenever user types or changes the value in that input field. This sets up the real-time feedback.
+
+- Attached event listener to `click` to `passwordToggle` and `confirmPasswordToggle` butttons to trigger `passwordInput` and `confirmPasswordInput's` visibility state.
 
 - Attached an event listener to the `submit` event of the form. This handles the final validation and form submission logic.
 
@@ -212,6 +235,10 @@ While convenient for this specific, relatively non-sensitive piece of informatio
 A challenge I faced in implementing the real-time validation was figuring out the best practice to render appropiate error messages when conditions of user `input` return `false` during the `input` and `submit` phases of the form.
 
 Although a great portion of this information was provided during initial phase of assignment, I had to learn about new methods when it comes to validating user input data.
+
+Another challenge I faced was properly rendering the display styling of the `togglePassword` and the `toggleConfirmPassword` buttons into the `passwordInput` and `confirmPasswordInput` fields.
+
+To find a solution to this issue, I had to actively monitor the styling properties I applied using the Chrome Dev Tools, and make changes based on what I could see applied. After playing around with some of the styling, I ended up finding a solution.
 
 5. How did you ensure that custom error messages were user-friendly and displayed at the appropriate times?
 
