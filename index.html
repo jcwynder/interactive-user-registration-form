@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <script src="script.js" defer></script>
     <title>Interactive Registration Form</title>
   </head>
@@ -29,7 +36,17 @@
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" id="password" name="password" />
+          <div class="password-input-container">
+            <input type="password" id="password" name="password" />
+            <button
+              type="button"
+              id="togglePassword"
+              class="password-toggle-btn"
+              aria-label="Toggle password visibility"
+            >
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
           <small
             >Password must be at least 8 characters long, include an uppercase
             letter, a lowercase letter, and a number.</small
@@ -38,7 +55,21 @@
         </div>
         <div class="form-group">
           <label for="confirmPassword">Confirm Password:</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" />
+          <div class="password-input-container">
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+            />
+            <button
+              type="button"
+              id="toggleConfirmPassword"
+              class="password-toggle-btn"
+              aria-label="Toggle confirm password visibility"
+            >
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
           <span class="error-message" id="confirmPasswordError"></span>
         </div>
         <button type="submit">Register</button>

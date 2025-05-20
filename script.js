@@ -10,6 +10,10 @@ const emailError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
 const confirmPasswordError = document.getElementById("confirmPasswordError");
 
+// Get the password toggle buttons
+const passwordToggle = document.getElementById("togglePassword");
+const confirmPasswordToggle = document.getElementById("toggleConfirmPassword");
+
 // Loads saved username value from localStorage
 const savedUsername = localStorage.getItem("username");
 if (savedUsername) {
@@ -83,11 +87,48 @@ function validateConfirmPassword() {
   }
 }
 
+// Function to toggle password visibility and icon style
+function togglePasswordVisibility(inputElement, toggleButtonElement) {
+  // Get the icon inside the button
+  const icon = toggleButtonElement.querySelector("i");
+  // Checks current type of the password input field
+  if (inputElement.type === "password") {
+    // If input field's type is "password", input field type is changed to "text", making the password visible
+    inputElement.type = "text";
+    // When input field type is "text", the eye icon is removed and the eye-slash icon is added to indicate the password is now visible
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    // If input field's type is not "password", input field type is reverted to "password", hiding the password
+    inputElement.type = "password";
+    // When input field type is reverted to "password", the eye-slash icon is removed and the eye icon is added to indicate the password is hidden
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
+}
+
 // Validity functions called whenever user types or changes the value in that input field, providing real-time feedback
 usernameInput.addEventListener("input", validateUsername);
 emailInput.addEventListener("input", validateEmail);
 passwordInput.addEventListener("input", validatePassword);
 confirmPasswordInput.addEventListener("input", validateConfirmPassword);
+
+// Checks if element exists
+if (passwordToggle) {
+  // Attaches a click event listener to the passwordToggle button
+  passwordToggle.addEventListener("click", () => {
+    // When passwordToggle button is clicked, togglePasswordVisibility function is called to excute toggle functionality for passwordInput field
+    togglePasswordVisibility(passwordInput, passwordToggle);
+  });
+}
+// Checks if element exists
+if (confirmPasswordToggle) {
+  // Attaches a click event listener to the confirmPasswordToggle button
+  confirmPasswordToggle.addEventListener("click", () => {
+    // When confirmPasswordToggle button is clicked, togglePasswordVisibility function is called to excute toggle functionality for confirmPasswordInput field
+    togglePasswordVisibility(confirmPasswordInput, confirmPasswordToggle);
+  });
+}
 
 // Listens for form's submission handling
 registrationForm.addEventListener("submit", (event) => {
