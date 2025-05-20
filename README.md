@@ -191,7 +191,7 @@ Combining HTML5 validation attributes and JavaScript-based validation can provid
 
 3. Explain how you used `localStorage` to persist and retrieve the username. What are the limitations of `localStorage` for storing sensitive data?
 
-When the user successfully registers (submits form when all input fields are valid), their entered username is saved in the browser's local storage under the key "username".
+When the user successfully registers (submits form when all `input` fields are valid), their entered username is saved in the browser's local storage under the key "username".
 
 This data will persist even after the browser window is closed and reopened (as long as the user doesn't clear their browser data).
 
@@ -208,3 +208,41 @@ While `localStorage` provides a convenient way to persist data on the client-sid
 While convenient for this specific, relatively non-sensitive piece of information, it is crucial to understand the inherent security limitations of `localStorage` and avoid using it for storing anything that needs strong confidentiality.
 
 4. Describe a challenge you faced in implementing the real-time validation and how you solved it.
+
+A challenge I faced in implementing the real-time validation was figuring out the best practice to render appropiate error messages when conditions of user `input` return `false` during the `input` and `submit` phases of the form.
+
+Although a great portion of this information was provided during initial phase of assignment, I had to learn about new methods when it comes to validating user input data.
+
+5. How did you ensure that custom error messages were user-friendly and displayed at the appropriate times?
+
+**Clear and Specific Error Messages:**
+
+- Each validation function sets a specific textContent for the corresponding error message element. For example:
+  - `usernameError.textContent = "Username is required.";` is clear about what the user needs to do.
+  - `emailError.textContent = "Please enter a valid email address.";` guides the user on the expected format.
+  - Password error messages pinpoint the specific criteria that were not met (length, lowercase, uppercase, number).
+  - `confirmPasswordError.textContent = "Passwords do not match.";` directly addresses the issue.
+
+**Real-time Feedback (`input` Event Listeners):**
+
+- The `addEventListener("input", validate...)` lines ensure that the validation functions are called as the user types in each input field.
+
+This provides immediate feedback, allowing users to correct errors as they occur, rather than waiting until they try to submit the form.
+
+**Clearing Error Messages on Correction:**
+
+- Within each validation function, if the input is valid, the `textContent` of the corresponding error element is set to an empty string (`""`).
+
+This ensures that error messages disappear as soon as the user corrects the invalid input, reducing clutter and providing a positive visual cue.
+
+**Submission-Time Validation:**
+
+- The `registrationForm.addEventListener("submit", ...)` block performs a final validation check when the user attempts to submit the form.
+
+This is crucial for catching errors if the user somehow bypassed the real-time validation.
+
+**Focusing on the First Invalid Field:**
+
+- In the `submit` event listener's `else` block (when validation fails), the code attempts to focus on the first invalid input field using `inputElement.focus()`.
+
+This helps direct the user's attention to the field they need to correct first.
