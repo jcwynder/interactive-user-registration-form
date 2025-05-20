@@ -19,22 +19,22 @@ In order to create a responsive and interactive form, I applied a wide range of 
 ## App Preview
 
 Task Management App
-![Design preview for Task Management App](images/TaskManagementAppPreview.png)
+![Design preview for Task Management App](#)
 
 Alert if input fields are left blank upon submission from Add Task button
-![Design preview for Task Management App](images/TaskManagementAppPreviewAlertIfInputFieldsLeftBlankUponSubmission.png)
+![Design preview for Task Management App](#)
 
 Functionality of task filter by status
-![Design preview for Task Management App](images/TaskManagementAppPreviewTaskDataFilteredToStatusInProgress.png)
+![Design preview for Task Management App](#)
 
 Functionality of task filter by category
-![Design preview for Task Management App](images/TaskManagementAppPreviewTaskDataFilteredByCategory.png)
+![Design preview for Task Management App](#)
 
 Update status functionality
-![Design preview for Task Management App](images/TaskManagementAppPreviewStatusChangeFunctionality.png)
+![Design preview for Task Management App](#)
 
 Delete task data functionality
-![Design preview for Task Management App](images/TaskManagementAppPreviewDeleteFunctionalityConfirmationMessage.png)
+![Design preview for Task Management App](#)
 
 ## Implementation
 
@@ -158,21 +158,53 @@ Below is a brief overview of the order of JavaScript code implemented:
 
 - Attached an event listener to the `submit` event of the form. This handles the final validation and form submission logic.
 
-## Reflection
+## Reflection Questions
 
-### Challenge(s) Faced
+1. How did `event.preventDefault()` help in handling form submission?
 
-Throughout this assignment, I encountered one major challenge that required me to revisit concepts I thought I had mastered and deepen my understanding of some core JavaScript fundamentals.
+`event.preventDefault()` acts as a gatekeeper for the form submission. It tells the browser to hold off on its default behavior so that my JavaScript code can first validate the data and then handle the submission in a way that I have specifically programmed.
 
-While I was already comfortable with implementing functionality for tasks like storing data as objects, rendering, updating, deleting, and saving/loading data from local storage, the biggest hurdle came when I had to get the filter dropdown options to properly filter the task data based on the selected criteria.
+2. What is the difference between using HTML5 validation attributes and JavaScript-based validation? Why might you use both?
 
-### Approach to Solving Challenge(s)
+HTML5 provides several attributes that can be directly added to the HTML input elements to enforce basic validation rules without writing any JavaScript.
 
-I had to look into how to utilize the given and generated options within the filter dropdown once selected to only render task data whose information matched the selected options.
-To solve this, I had to explore how to utilize the selected options from the dropdown to display only the tasks whose properties matched the filter. I began by creating a variable to store the selected filter options. Then, I implemented an array to iterate through the stored values and ensure that the correct options were selected when the dropdown was refreshed.
+Examples:
 
-This approach allowed me to filter the task data efficiently, ensuring that only the tasks matching the selected criteria were rendered on the page.
+- `required`: Makes a field mandatory.
+- `type="email"`: Ensures the input value is in a basic email format.
+- `type="number", min, max`: For numeric input constraints.
+- `minlength, maxlength`: For text length constraints.
+- `pattern`: Allows you to specify a regular expression that the input value must match.
 
-### What I Would Improve
+JavaScript allows you to implement highly specific and complex validation rules that go beyond what HTML5 attributes offers.
 
-Looking ahead, if I had more time, I would implement a feature that allows users to update all properties of the rendered task data (task name, category, and deadline) directly, rather than having to create a new task entry to make changes. Additionally, I would enhance the user interface with color and accessibility improvements to make the app more visually appealing and user-friendly.
+In my code, I have custom checks for:
+
+- Username being non-empty.
+- Email matching a specific regular expression (`/^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/`).
+- Password length, inclusion of lowercase, uppercase, and numeric characters.
+- Confirmation password matching the main password.
+
+With JavaScript, you have full control over how error messages are displayed (e.g., the content, styling, and placement using the textContent of the error message elements). You can provide more informative and user-friendly feedback.
+
+Combining HTML5 validation attributes and JavaScript-based validation can provide a more robust and user-friendly experience and ensure a good level of data quality.
+
+3. Explain how you used `localStorage` to persist and retrieve the username. What are the limitations of `localStorage` for storing sensitive data?
+
+When the user successfully registers (submits form when all input fields are valid), their entered username is saved in the browser's local storage under the key "username".
+
+This data will persist even after the browser window is closed and reopened (as long as the user doesn't clear their browser data).
+
+If the user has registered before, their username will be automatically pre-filled in the username field when they visit the registration page again.
+
+While `localStorage` provides a convenient way to persist data on the client-side, it has significant limitations when it comes to storing sensitive information:
+
+- No Built-in Encryption
+- Security Risks (Cross-Site Scripting - XSS)
+- Not Secure Against Malicious Users
+- Limited Storage Capacity
+- Synchronous Access
+
+While convenient for this specific, relatively non-sensitive piece of information, it is crucial to understand the inherent security limitations of `localStorage` and avoid using it for storing anything that needs strong confidentiality.
+
+4. Describe a challenge you faced in implementing the real-time validation and how you solved it.
