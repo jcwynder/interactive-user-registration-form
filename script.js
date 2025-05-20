@@ -10,6 +10,8 @@ const emailError = document.getElementById("emailError");
 const passwordError = document.getElementById("passwordError");
 const confirmPasswordError = document.getElementById("confirmPasswordError");
 
+// Implementation to save username to localStorage
+localStorage.setItem("username", usernameInput.value);
 // Loads saved username value from localStorage
 const savedUsername = localStorage.getItem("username");
 if (savedUsername) {
@@ -86,27 +88,24 @@ emailInput.addEventListener("input", validateEmail);
 passwordInput.addEventListener("input", validatePassword);
 confirmPasswordInput.addEventListener("input", validateConfirmPassword);
 
-// Listens for the form's submission
+// Listens for form's submission handling
 registrationForm.addEventListener("submit", (event) => {
   // Stops default form submission behavior
   event.preventDefault();
-
+  // Gathers validation status of input fields by calling dedicated validation functions for each
   const isUsernameValid = validateUsername();
   const isEmailValid = validateEmail();
   const isPasswordValid = validatePassword();
   const isConfirmPasswordValid = validateConfirmPassword();
-
+  // If input value for selected properties returns true (valid)
   if (
     isUsernameValid &&
     isEmailValid &&
     isPasswordValid &&
     isConfirmPasswordValid
   ) {
-    // Displays success message if above condition is true
+    // Displays success message
     alert("Registration successful!");
-
-    // Implementation to save username to localStorage
-    localStorage.setItem("username", usernameInput.value);
 
     // Optionally, reset the form
     registrationForm.reset();
