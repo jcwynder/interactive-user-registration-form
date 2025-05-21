@@ -202,16 +202,9 @@ Examples:
 - `minlength, maxlength`: For text length constraints.
 - `pattern`: Allows you to specify a regular expression that the input value must match.
 
-JavaScript allows you to implement highly specific and complex validation rules that go beyond what HTML5 attributes offers.
+JavaScript-based validation allows you to implement highly specific and complex validation rules that go beyond what HTML5 attributes offers.
 
-In my code, I have custom checks for:
-
-- Username being non-empty.
-- Email matching a specific regular expression (`/^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/`).
-- Password length, inclusion of lowercase, uppercase, and numeric characters.
-- Confirmation password matching the main password.
-
-With JavaScript, you have full control over how error messages are displayed (e.g., the content, styling, and placement using the textContent of the error message elements). You can provide more informative and user-friendly feedback.
+This validation method grants full control over how error messages are displayed (e.g., the content, styling, and placement using the textContent of the error message elements). You can provide more informative and user-friendly feedback.
 
 Combining HTML5 validation attributes and JavaScript-based validation can provide a more robust and user-friendly experience and ensure a good level of data quality.
 
@@ -273,6 +266,6 @@ This is crucial for catching errors if the user somehow bypassed the real-time v
 
 **Focusing on the First Invalid Field:**
 
-- In the `submit` event listener's `else` block (when validation fails), the code attempts to focus on the first invalid input field using `inputElement.focus()`.
+- In the `submit` event listener's `else` block (when validation fails), the code focuses on the first invalid input field using `inputElement.focus()`.
 
 This helps direct the user's attention to the field they need to correct first.
