@@ -5,7 +5,7 @@
 For this assignment, I was tasked with building an **Interactive User Registration Form** with the intended goals:
 
 1. Structure an HTML form with appropriate input fields for registration.
-2. Implement real-time input validation using JavaScript event listeners (input event).
+2. Implement real-time input validation using JavaScript event listeners (`input` event).
 3. Use HTML5 validation attributes (e.g., required, type, minlength, pattern).
 4. Apply the JavaScript Constraint Validation API to check validity and display custom error messages.
 5. Dynamically create and display error messages next to input fields.
@@ -172,15 +172,15 @@ Below is a brief overview of the order of JavaScript code implemented:
 
 - Selected necessary DOM elements (input fields, error message elements,and toggle button for password visibility) using variables.
 
-- Established implementation to load saved data of `userNameInput.value`, from the user's `localStorage`, into Username `input` field upon form refresh.
+- Established implementation to load saved data of `userNameInput.value`, from the user's `localStorage`, into Username input field upon form refresh. This data is saved only if submission of registration is successful.
 
-- Created validation functions for each `input` field using.
+- Created validation functions for each input field using.
 
-- Created function to implement toggle functionality of `passwordInput` and `confirmPasswordInput's` visibility state (visible or hidden).
+- Created function to implement toggle functionality of `passwordInput` and `confirmPasswordInput's` elements (input fields) visibility state (visible or hidden).
 
-- Attached event listener to `input` fields to trigger the validation functions on each `input` event whenever user types or changes the value in that input field. This sets up the real-time feedback.
+- Attached event listener to input fields to trigger the validation functions on each `input` event whenever user types or changes the value in that input field. This sets up the real-time feedback.
 
-- Attached event listener to `click` to `passwordToggle` and `confirmPasswordToggle` butttons to trigger toggle of `passwordInput` and `confirmPasswordInput's` visibility state.
+- Attached event listener `click` to `passwordToggle` and `confirmPasswordToggle` elements (butttons) to trigger toggle of `passwordInput` and `confirmPasswordInput's` elements (input fields) visibility state.
 
 - Attached an event listener to the `submit` event of the form. This handles the final validation and form submission logic.
 
@@ -210,7 +210,7 @@ Combining HTML5 validation attributes and JavaScript-based validation can provid
 
 3. Explain how you used `localStorage` to persist and retrieve the username. What are the limitations of `localStorage` for storing sensitive data?
 
-When the user successfully registers (submits form when all `input` fields are valid), their entered username is saved in the browser's local storage under the key "username".
+When the user successfully registers (submits form when all input fields are valid), their entered username is saved in the browser's local storage under the key "username".
 
 This data will persist even after the browser window is closed and reopened (as long as the user doesn't clear their browser data).
 
@@ -232,7 +232,7 @@ A challenge I faced in implementing the real-time validation was figuring out th
 
 Although a great portion of this information was provided during initial phase of assignment, I had to learn about new methods when it comes to validating user input data.
 
-Another challenge I faced was properly rendering the display styling of the `togglePassword` and the `toggleConfirmPassword` buttons into the `passwordInput` and `confirmPasswordInput` fields.
+Another challenge I faced was properly rendering the display styling of the `togglePassword` and the `toggleConfirmPassword` element buttons into the `passwordInput` and `confirmPasswordInput` element fields.
 
 To find a solution to this issue, I had to actively monitor the styling properties I applied using the Chrome Dev Tools, and make changes based on what I could see applied. After playing around with some of the styling, I ended up finding a solution.
 
@@ -266,6 +266,6 @@ This is crucial for catching errors if the user somehow bypassed the real-time v
 
 **Focusing on the First Invalid Field:**
 
-- In the `submit` event listener's `else` block (when validation fails), the code focuses on the first invalid input field using `inputElement.focus()`.
+- In the `submit` event listener's `else` block, which runs when any input field the code focuses on the first invalid input field using `invalidField.focus()`.
 
 This helps direct the user's attention to the field they need to correct first.
