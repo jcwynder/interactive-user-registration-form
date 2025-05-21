@@ -16,10 +16,13 @@ In order to create a responsive and interactive form, I applied a wide range of 
 
 [Click Here to Access Interactive User Registration Form](https://htmlpreview.github.io/?https://github.com/jcwynder/interactive-user-registration-form/blob/main/index.html)
 
-## App Preview
+## Form Preview
 
-Interactive User Registration Form
-![Design preview for Interactive User Registration Form](images/InteractiveUserRegistrationFormPreview.png)
+Interactive User Registration Form - initial form state
+![Design preview for Interactive User Registration Form (initial form state)](images/InteractiveUserRegistrationFormPreview.png)
+
+Interactive User Registration Form - rendered state of form if inputs fields are invalid after form submission
+![Design preview for Interactive User Registration Form](images/InteractiveUserRegistrationFormPreview2.png)
 
 ## Implementation
 
@@ -40,9 +43,9 @@ This form is nested within a parent container and includes:
 - A `<span>` element to display appropiate error messages to correspond with each input.
 - Unique `<button>` element(s) used to toggle visibility state (visible or hidden) of `input.values`.
 
-### App Styling
+### Form Styling
 
-After creating my HTML structure, I moved onto the `<styles.css>` file to apply styling to the app.
+After creating my HTML structure, I moved onto the `<styles.css>` file to apply styling to the form.
 
 The styling applied is used to make the form presentable and to style the error messages.
 
