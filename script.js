@@ -14,7 +14,7 @@ const confirmPasswordError = document.getElementById("confirmPasswordError");
 const passwordToggle = document.getElementById("togglePassword");
 const confirmPasswordToggle = document.getElementById("toggleConfirmPassword");
 
-// Loads saved username value from localStorage
+// Loads saved username value from localStorage into username field
 const savedUsername = localStorage.getItem("username");
 if (savedUsername) {
   usernameInput.value = savedUsername;

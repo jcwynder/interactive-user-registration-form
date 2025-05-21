@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Linking external CSS file for styling -->
     <link rel="stylesheet" href="styles.css" />
+    <!-- Linking Font Awesome to utilize icon library -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -11,18 +13,25 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Linking JavaScript file, deferred to ensure it runs after HTML parsing -->
     <script src="script.js" defer></script>
     <title>Interactive User Registration Form</title>
   </head>
   <body>
+    <!-- Main container for the registration form -->
     <div class="container">
       <h1>Register</h1>
+      <!-- Form element that will collect user input -->
       <form id="registrationForm" novalidate>
+        <!-- Username input field -->
         <div class="form-group">
           <label for="username">Username:</label>
           <input type="text" id="username" name="username" />
+          <!-- Placeholder for any error messages related to the username -->
           <span class="error-message" id="usernameError"></span>
         </div>
+
+        <!-- Email input field -->
         <div class="form-group">
           <label for="email">Email:</label>
           <input
@@ -32,27 +41,36 @@
             placeholder="name@example.com"
             required
           />
+          <!-- Placeholder for any error messages related to the email -->
           <span class="error-message" id="emailError"></span>
         </div>
+
+        <!-- Password input field with toggle visibility -->
         <div class="form-group">
           <label for="password">Password:</label>
           <div class="password-input-container">
             <input type="password" id="password" name="password" />
+            <!-- Button to toggle the visibility of the password -->
             <button
               type="button"
               id="togglePassword"
               class="password-toggle-btn"
               aria-label="Toggle password visibility"
             >
+              <!-- Utilized the eye icon to reference initial state of password visibility (hidden) -->
               <i class="fa-solid fa-eye"></i>
             </button>
           </div>
+          <!-- Instructions for password strength requirements -->
           <small
             >Password must be at least 8 characters long, include an uppercase
             letter, a lowercase letter, and a number.</small
           >
+          <!-- Placeholder for any error messages related to the password -->
           <span class="error-message" id="passwordError"></span>
         </div>
+
+        <!-- Confirm Password input field with toggle visibility -->
         <div class="form-group">
           <label for="confirmPassword">Confirm Password:</label>
           <div class="password-input-container">
@@ -61,17 +79,22 @@
               id="confirmPassword"
               name="confirmPassword"
             />
+            <!-- Button to toggle the visibility of the confirm password -->
             <button
               type="button"
               id="toggleConfirmPassword"
               class="password-toggle-btn"
               aria-label="Toggle confirm password visibility"
             >
+              <!-- Utilized the eye icon to reference initial state of password visibility (hidden) -->
               <i class="fa-solid fa-eye"></i>
             </button>
           </div>
+          <!-- Placeholder for any error messages related to the confirm password -->
           <span class="error-message" id="confirmPasswordError"></span>
         </div>
+
+        <!-- Submit button for the form -->
         <button type="submit">Register</button>
       </form>
     </div>
