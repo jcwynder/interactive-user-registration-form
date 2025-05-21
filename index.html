@@ -26,7 +26,7 @@
         <!-- Username input field -->
         <div class="form-group">
           <label for="username">Username:</label>
-          <input type="text" id="username" name="username" />
+          <input type="text" id="username" name="username" required />
           <!-- Placeholder for any error messages related to the username -->
           <span class="error-message" id="usernameError"></span>
         </div>
@@ -49,7 +49,14 @@
         <div class="form-group">
           <label for="password">Password:</label>
           <div class="password-input-container">
-            <input type="password" id="password" name="password" />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              minlength="8"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+            />
             <!-- Button to toggle the visibility of the password -->
             <button
               type="button"
@@ -78,6 +85,7 @@
               type="password"
               id="confirmPassword"
               name="confirmPassword"
+              required
             />
             <!-- Button to toggle the visibility of the confirm password -->
             <button

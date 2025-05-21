@@ -22,66 +22,61 @@ if (savedUsername) {
 
 // Real-time validation functions:
 
-// Validation for username input
+// Validation for username input using the Constraint Validation API
 function validateUsername() {
-  // If input is invalid (blank), returns error message for user to submit proper input
-  if (!usernameInput.value.trim()) {
-    usernameError.textContent = "Username is required.";
+  if (!usernameInput.validity.valid) {
+    if (usernameInput.validity.valueMissing) {
+      usernameError.textContent = "Username is required.";
+    } else {
+      usernameError.textContent = "Username is invalid.";
+    }
     return false;
   } else {
-    // If above condition is true, error message is cleared
     usernameError.textContent = "";
     return true;
   }
 }
 
-// Validation for email input
+// Validation for email input using the Constraint Validation API
 function validateEmail() {
-  // Variable declared and assigned to given regex pattern
-  const emailRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  // Checks if current value of emailInput matches assigned regex pattern
-  if (!emailRegex.test(emailInput.value)) {
-    emailError.textContent = "Please enter a valid email address.";
+  if (!emailInput.validity.valid) {
+    if (emailInput.validity.valueMissing) {
+      emailError.textContent = "Email is required.";
+    } else if (emailInput.validity.typeMismatch) {
+      emailError.textContent = "Please enter a valid email address.";
+    }
     return false;
   } else {
-    // If input value matches given regex pattern, error message is cleared
     emailError.textContent = "";
     return true;
   }
 }
 
-// Validation for password input
+// Validation for password input using the Constraint Validation API
 function validatePassword() {
-  const passwordValue = passwordInput.value;
-  // Checks if password input data passes custom conditions
-  if (passwordValue.length < 8) {
-    passwordError.textContent = "Password must be at least 8 characters long.";
-    return false;
-  } else if (!/[a-z]/.test(passwordValue)) {
-    passwordError.textContent = "Password must include a lowercase letter.";
-    return false;
-  } else if (!/[A-Z]/.test(passwordValue)) {
-    passwordError.textContent = "Password must include an uppercase letter.";
-    return false;
-  } else if (!/[0-9]/.test(passwordValue)) {
-    passwordError.textContent = "Password must include a number.";
+  if (!passwordInput.validity.valid) {
+    if (passwordInput.validity.valueMissing) {
+      passwordError.textContent = "Password is required.";
+    } else if (passwordInput.validity.tooShort) {
+      passwordError.textContent =
+        "Password must be at least 8 characters long.";
+    } else if (passwordInput.validity.patternMismatch) {
+      passwordError.textContent =
+        "Password must include uppercase, lowercase, and a number.";
+    }
     return false;
   } else {
-    // If custom validation rules are met (true), error message is cleared
     passwordError.textContent = "";
     return true;
   }
 }
-// Validation for password confirmation input
+
+// Validation for password confirmation input using the Constraint Validation API
 function validateConfirmPassword() {
-  // Checks if confirmPasswordInput value does not equal passwordInput value (returns false)
   if (confirmPasswordInput.value !== passwordInput.value) {
-    // Returns error message if condition above returns false
     confirmPasswordError.textContent = "Passwords do not match.";
     return false;
   } else {
-    // If condition above returns true, error message is cleared
     confirmPasswordError.textContent = "";
     return true;
   }
@@ -121,6 +116,7 @@ if (passwordToggle) {
     togglePasswordVisibility(passwordInput, passwordToggle);
   });
 }
+
 // Checks if element exists
 if (confirmPasswordToggle) {
   // Attaches a click event listener to the confirmPasswordToggle button
@@ -134,12 +130,14 @@ if (confirmPasswordToggle) {
 registrationForm.addEventListener("submit", (event) => {
   // Stops default form submission behavior
   event.preventDefault();
-  // Gathers validation status of input fields by calling dedicated validation functions for each
+
+  // Call checkValidity() for each field
   const isUsernameValid = validateUsername();
   const isEmailValid = validateEmail();
   const isPasswordValid = validatePassword();
   const isConfirmPasswordValid = validateConfirmPassword();
-  // If input value for selected properties returns true (valid)
+
+  // If all inputs are valid
   if (
     isUsernameValid &&
     isEmailValid &&
@@ -149,21 +147,14 @@ registrationForm.addEventListener("submit", (event) => {
     // Displays success message
     alert("Registration successful!");
 
-    // Implementation to save username to localStorage
+    // Save username to localStorage
     localStorage.setItem("username", usernameInput.value);
 
     // Optionally, reset the form
     registrationForm.reset();
   } else {
-    // Error handling to direct user's attention to the first invalid input field, then guides them to correct
-    if (!isUsernameValid) {
-      usernameInput.focus();
-    } else if (!isEmailValid) {
-      emailInput.focus();
-    } else if (!isPasswordValid) {
-      passwordInput.focus();
-    } else if (!isConfirmPasswordValid) {
-      confirmPasswordInput.focus();
-    }
+    // If any input is invalid, focus on the first invalid field
+    const invalidField = registrationForm.querySelector(":invalid");
+    if (invalidField) invalidField.focus();
   }
 });

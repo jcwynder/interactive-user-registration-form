@@ -171,13 +171,13 @@ Below is a brief overview of the order of JavaScript code implemented:
 
 - Established implementation to load saved data of `userNameInput.value`, from the user's `localStorage`, into Username `input` field upon form refresh.
 
-- Created validation functions for each `input` field.
+- Created validation functions for each `input` field using.
 
 - Created function to implement toggle functionality of `passwordInput` and `confirmPasswordInput's` visibility state (visible or hidden).
 
 - Attached event listener to `input` fields to trigger the validation functions on each `input` event whenever user types or changes the value in that input field. This sets up the real-time feedback.
 
-- Attached event listener to `click` to `passwordToggle` and `confirmPasswordToggle` butttons to trigger `passwordInput` and `confirmPasswordInput's` visibility state.
+- Attached event listener to `click` to `passwordToggle` and `confirmPasswordToggle` butttons to trigger toggle of `passwordInput` and `confirmPasswordInput's` visibility state.
 
 - Attached an event listener to the `submit` event of the form. This handles the final validation and form submission logic.
 
